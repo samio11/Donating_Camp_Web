@@ -1,7 +1,11 @@
 import React from 'react';
 import './Bg_banner.css'
+import { useLoaderData } from 'react-router-dom';
+import Products from './Products';
 
 const Home = () => {
+    const loadData = useLoaderData();
+  
     return (
         <section>
             {/* This is bannner section */}
@@ -14,8 +18,12 @@ const Home = () => {
                         <button className='btn btn-outline btn-error'>Search</button>
                         </div>
                     </div>
-
                 </div>
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-5'>
+                {
+                    loadData?.map(product => <Products key={product.title} product={product}></Products>)
+                }
             </div>
         </section>
     );
