@@ -13,6 +13,11 @@ const Donation = () => {
             setnoFound("No Data Found")
         }
     }, [])
+    const removeAll = ()=>{
+        localStorage.clear();
+        setDonated([]);
+        setnoFound("N0 Data Found")
+    }
     return (
         <div>
             {
@@ -21,6 +26,9 @@ const Donation = () => {
                     donated.map(p2 => <Donated_product key={p2.id} product={p2}></Donated_product>)
                    }
                 </div>
+            }
+            {
+                donated.length > 0 && <button onClick={()=> removeAll()} className='btn btn-error text-white mt-5'>Delete All</button>
             }
         </div>
     );
