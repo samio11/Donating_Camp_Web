@@ -11,9 +11,10 @@ const View_element = () => {
         const phone = load1.find(p1 => p1.id == id)
         setData(phone)
     }, [load1, id])
-    const { picture, price, title, description, id } = data || {}
+    const { picture, price, title, description } = data
     console.log(data)
     const saveLocal = () => {
+        console.log('button clicked')
         const arr1 = [];
         const donate = JSON.parse(localStorage.getItem('item'));
         if (!donate) {
@@ -40,9 +41,9 @@ const View_element = () => {
 
                 <img src={picture} className='w-full h-full' alt="" />
                 <div className='w-full h-[70px] absolute bottom-0 left-0 bg-transparent shadow-xl flex justify-start items-center'>
-                    <button onClick={saveLocal()} className='btn btn-error ml-4 p-5 text-white'>Donate $ {price}</button>
-                    <ToastContainer />
+                    <button onClick={()=>saveLocal()} className='btn btn-error ml-4 p-5 text-white'>Donate $ {price}</button>
                 </div>
+                <ToastContainer />
 
             </div>
             <div className='my-5'>
